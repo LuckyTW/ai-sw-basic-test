@@ -2,9 +2,9 @@
 
 ### 정답 코드
 
-모범 답안은 `sample_submission_algo/` 디렉토리에 위치합니다:
-- `sample_submission_algo/mini_git.py` — Commit + CommitGraph + InvertedIndex + merge_sort + BFS
-- `sample_submission_algo/cli.py` — REPL + 명령어 파싱 + Git 스타일 출력
+모범 답안은 `sample_submissions/algo_level2_mission01/` 디렉토리에 위치합니다:
+- `sample_submissions/algo_level2_mission01/mini_git.py` — Commit + CommitGraph + InvertedIndex + merge_sort + BFS
+- `sample_submissions/algo_level2_mission01/cli.py` — REPL + 명령어 파싱 + Git 스타일 출력
 
 ### 핵심 구현 포인트
 

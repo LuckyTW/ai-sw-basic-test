@@ -111,12 +111,14 @@ linux-test/
 │   └── db/level3/mission01/           #   커밋 이력 DB 분석기
 │       └── template/
 │
-├── sample_submission/                 # python_level1_mission01 정답 예시
-├── sample_submission_python02/        # python_level1_mission02 정답 예시
-├── sample_submission_linux/           # linux_level2_mission01 정답 예시
-├── sample_submission_ds/              # ds_level1_mission01 정답 예시
-├── sample_submission_algo/            # algo_level2_mission01 정답 예시
-├── sample_submission_db/              # db_level3_mission01 정답 예시
+├── sample_submissions/                # 미션별 정답 예시 코드
+│   ├── python_level1_mission01/      #   Python 도서 관리 시스템
+│   ├── python_level1_mission02/      #   서버 접근 로그 분석기
+│   ├── python_level1_mission03/      #   프롬프트 관리 프로그램
+│   ├── linux_level2_mission01/       #   리눅스 보안 감사 도구
+│   ├── ds_level1_mission01/          #   Mini LRU 캐시
+│   ├── algo_level2_mission01/        #   Mini Git 시뮬레이터
+│   └── db_level3_mission01/          #   커밋 이력 DB 분석기
 │
 ├── scripts/
 │   └── run_grading.py                 # 메인 실행 스크립트 (CLI 진입점)
@@ -152,22 +154,22 @@ python3 scripts/run_grading.py \
 
 ```bash
 # Python 도서 관리 시스템 (난이도 1)
-python3 scripts/run_grading.py --student-id sample --mission-id python_level1_mission01 --submission-dir sample_submission
+python3 scripts/run_grading.py --student-id sample --mission-id python_level1_mission01 --submission-dir sample_submissions/python_level1_mission01
 
 # Python 서버 로그 분석기 (난이도 1)
-python3 scripts/run_grading.py --student-id sample --mission-id python_level1_mission02 --submission-dir sample_submission_python02
+python3 scripts/run_grading.py --student-id sample --mission-id python_level1_mission02 --submission-dir sample_submissions/python_level1_mission02
 
 # 리눅스 보안 감사 도구 (난이도 2)
-python3 scripts/run_grading.py --student-id sample --mission-id linux_level2_mission01 --submission-dir sample_submission_linux
+python3 scripts/run_grading.py --student-id sample --mission-id linux_level2_mission01 --submission-dir sample_submissions/linux_level2_mission01
 
 # Mini LRU 캐시 (난이도 1)
-python3 scripts/run_grading.py --student-id sample --mission-id ds_level1_mission01 --submission-dir sample_submission_ds
+python3 scripts/run_grading.py --student-id sample --mission-id ds_level1_mission01 --submission-dir sample_submissions/ds_level1_mission01
 
 # Mini Git 커밋 그래프 시뮬레이터 (난이도 2)
-python3 scripts/run_grading.py --student-id sample --mission-id algo_level2_mission01 --submission-dir sample_submission_algo
+python3 scripts/run_grading.py --student-id sample --mission-id algo_level2_mission01 --submission-dir sample_submissions/algo_level2_mission01
 
 # 커밋 이력 DB 분석기 (난이도 3)
-python3 scripts/run_grading.py --student-id sample --mission-id db_level3_mission01 --submission-dir sample_submission_db
+python3 scripts/run_grading.py --student-id sample --mission-id db_level3_mission01 --submission-dir sample_submissions/db_level3_mission01
 ```
 
 ### 4. 결과 확인

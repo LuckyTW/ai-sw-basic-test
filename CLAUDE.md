@@ -23,7 +23,7 @@ pip3 install -r requirements.txt
 python3 scripts/run_grading.py --student-id <학생ID> --mission-id linux_level2_mission01 --submission-dir /path/to/submission
 
 # 샘플 정답 코드로 Linux mission01 채점 (테스트용)
-python3 scripts/run_grading.py --student-id sample --mission-id linux_level2_mission01 --submission-dir sample_submission_linux
+python3 scripts/run_grading.py --student-id sample --mission-id linux_level2_mission01 --submission-dir sample_submissions/linux_level2_mission01
 
 # Python 미션 채점 (--submission-dir 필수)
 python3 scripts/run_grading.py --student-id <학생ID> --mission-id python_level1_mission01 --submission-dir /path/to/submission
@@ -34,28 +34,37 @@ python3 scripts/run_grading.py --student-id <학생ID> --mission-id python_level
 python3 scripts/run_grading.py --student-id <학생ID> --mission-id ds_level1_mission01 --submission-dir /path/to/submission
 
 # 샘플 정답 코드로 Python mission01 채점 (테스트용)
-python3 scripts/run_grading.py --student-id sample --mission-id python_level1_mission01 --submission-dir sample_submission
+python3 scripts/run_grading.py --student-id sample --mission-id python_level1_mission01 --submission-dir sample_submissions/python_level1_mission01
 
 # 샘플 정답 코드로 Python mission02 채점 (테스트용)
-python3 scripts/run_grading.py --student-id sample --mission-id python_level1_mission02 --submission-dir sample_submission_python02
+python3 scripts/run_grading.py --student-id sample --mission-id python_level1_mission02 --submission-dir sample_submissions/python_level1_mission02
 
 # 샘플 정답 코드로 Python mission03 채점 (테스트용)
-python3 scripts/run_grading.py --student-id sample --mission-id python_level1_mission03 --submission-dir sample_submission_python03
+python3 scripts/run_grading.py --student-id sample --mission-id python_level1_mission03 --submission-dir sample_submissions/python_level1_mission03
 
 # 샘플 정답 코드로 DS mission01 채점 (테스트용)
-python3 scripts/run_grading.py --student-id sample --mission-id ds_level1_mission01 --submission-dir sample_submission_ds
+python3 scripts/run_grading.py --student-id sample --mission-id ds_level1_mission01 --submission-dir sample_submissions/ds_level1_mission01
 
 # 알고리즘 미션 채점 (--submission-dir 필수)
 python3 scripts/run_grading.py --student-id <학생ID> --mission-id algo_level2_mission01 --submission-dir /path/to/submission
 
 # 샘플 정답 코드로 Algo mission01 채점 (테스트용)
-python3 scripts/run_grading.py --student-id sample --mission-id algo_level2_mission01 --submission-dir sample_submission_algo
+python3 scripts/run_grading.py --student-id sample --mission-id algo_level2_mission01 --submission-dir sample_submissions/algo_level2_mission01
 
 # 데이터베이스 미션 채점 (--submission-dir 필수)
 python3 scripts/run_grading.py --student-id <학생ID> --mission-id db_level3_mission01 --submission-dir /path/to/submission
 
 # 샘플 정답 코드로 DB mission01 채점 (테스트용)
-python3 scripts/run_grading.py --student-id sample --mission-id db_level3_mission01 --submission-dir sample_submission_db
+python3 scripts/run_grading.py --student-id sample --mission-id db_level3_mission01 --submission-dir sample_submissions/db_level3_mission01
+
+# ─── standalone pytest 검증 (미션당 제출물 1개 + 테스트 1개) ───
+cd standalone/python_level1_mission01 && pytest test_book_manager.py -v
+cd standalone/python_level1_mission02 && pytest test_log_analyzer.py -v
+cd standalone/python_level1_mission03 && pytest test_prompt_manager.py -v
+cd standalone/linux_level2_mission01 && pytest test_auditor.py -v
+cd standalone/ds_level1_mission01 && pytest test_mini_redis.py -v
+cd standalone/algo_level2_mission01 && pytest test_mini_git.py -v
+cd standalone/db_level3_mission01 && pytest test_commit_analyzer.py -v
 ```
 
 테스트 디렉토리(`tests/`)는 존재하나 아직 구현된 테스트 없음.
@@ -135,31 +144,49 @@ linux-test/
 │       └── level3/mission01/           #   커밋 이력 DB 분석기
 │           └── template/              #     commit_analyzer.py
 │
-├── sample_submission/                  # python_level1_mission01 정답 예시 코드
-│   ├── models.py                       #   @dataclass Book
-│   ├── filters.py                      #   yield 제너레이터 + validate_args 데코레이터
-│   ├── storage.py                      #   JSONL 직렬화/역직렬화
-│   └── cli.py                          #   argparse CLI (add/list/search)
+├── sample_submissions/                 # 미션별 정답 예시 코드 (통합 디렉토리)
+│   ├── python_level1_mission01/        #   Python 도서 관리 시스템
+│   │   ├── models.py                   #     @dataclass Book
+│   │   ├── filters.py                  #     yield 제너레이터 + validate_args 데코레이터
+│   │   ├── storage.py                  #     JSONL 직렬화/역직렬화
+│   │   └── cli.py                      #     argparse CLI (add/list/search)
+│   ├── python_level1_mission02/        #   서버 접근 로그 분석기
+│   │   └── log_analyzer.py             #     CSV 파싱 + IP/상태코드/엔드포인트 분석
+│   ├── python_level1_mission03/        #   프롬프트 관리 프로그램
+│   │   └── prompt_manager.py           #     REPL 프롬프트 관리 프로그램
+│   ├── linux_level2_mission01/         #   리눅스 보안 감사 도구
+│   │   └── auditor.py                  #     설정 파일 파싱 + 보안 감사 + 리포트 생성
+│   ├── ds_level1_mission01/            #   Mini LRU 캐시
+│   │   ├── lru_cache.py                #     Node + DoublyLinkedList + LRUCache
+│   │   └── cli.py                      #     Redis 스타일 REPL CLI
+│   ├── algo_level2_mission01/          #   Mini Git 시뮬레이터
+│   │   ├── mini_git.py                 #     Commit + CommitGraph + InvertedIndex + merge_sort + BFS
+│   │   └── cli.py                      #     Git 스타일 REPL CLI
+│   └── db_level3_mission01/            #   커밋 이력 DB 분석기
+│       └── commit_analyzer.py          #     SQLite DB 생성 + CSV 로드 + SQL 분석 + 리포트
 │
-├── sample_submission_python02/         # python_level1_mission02 정답 예시 코드
-│   └── log_analyzer.py                 #   CSV 파싱 + IP/상태코드/엔드포인트 분석
-│
-├── sample_submission_python03/         # python_level1_mission03 정답 예시 코드
-│   └── prompt_manager.py               #   REPL 프롬프트 관리 프로그램
-│
-├── sample_submission_ds/               # ds_level1_mission01 정답 예시 코드
-│   ├── lru_cache.py                    #   Node + DoublyLinkedList + LRUCache
-│   └── cli.py                          #   Redis 스타일 REPL CLI
-│
-├── sample_submission_linux/             # linux_level2_mission01 정답 예시 코드
-│   └── auditor.py                      #   설정 파일 파싱 + 보안 감사 + 리포트 생성
-│
-├── sample_submission_algo/             # algo_level2_mission01 정답 예시 코드
-│   ├── mini_git.py                     #   Commit + CommitGraph + InvertedIndex + merge_sort + BFS
-│   └── cli.py                          #   Git 스타일 REPL CLI
-│
-├── sample_submission_db/               # db_level3_mission01 정답 예시 코드
-│   └── commit_analyzer.py              #   SQLite DB 생성 + CSV 로드 + SQL 분석 + 리포트
+├── standalone/                          # pytest 기반 standalone 검증 (미션당 제출물+테스트)
+│   ├── python_level1_mission01/
+│   │   ├── book_manager.py             #   합본 제출물 (models+filters+storage+cli)
+│   │   └── test_book_manager.py        #   17개 pytest 테스트
+│   ├── python_level1_mission02/
+│   │   ├── log_analyzer.py             #   제출물
+│   │   └── test_log_analyzer.py        #   7개 pytest 테스트
+│   ├── python_level1_mission03/
+│   │   ├── prompt_manager.py           #   제출물
+│   │   └── test_prompt_manager.py      #   16개 pytest 테스트
+│   ├── linux_level2_mission01/
+│   │   ├── auditor.py                  #   제출물
+│   │   └── test_auditor.py             #   7개 pytest 테스트
+│   ├── ds_level1_mission01/
+│   │   ├── mini_redis.py               #   합본 제출물 (lru_cache+cli)
+│   │   └── test_mini_redis.py          #   15개 pytest 테스트
+│   ├── algo_level2_mission01/
+│   │   ├── mini_git.py                 #   합본 제출물 (mini_git+cli)
+│   │   └── test_mini_git.py            #   16개 pytest 테스트
+│   └── db_level3_mission01/
+│       ├── commit_analyzer.py          #   제출물
+│       └── test_commit_analyzer.py     #   19개 pytest 테스트
 │
 ├── results/                            # 채점 결과 출력 디렉토리
 ├── submissions/                        # 학생 제출물 보관 (빈 디렉토리)
@@ -217,7 +244,7 @@ CLI (run_grading.py)
 
 - **제한시간**: 900초 (15분) | **합격**: 70점
 - **실행 환경**: macOS/Linux 모두 가능 (subprocess + tmpdir 기반)
-- **정답 예시**: `sample_submission/` 디렉토리
+- **정답 예시**: `sample_submissions/python_level1_mission01/` 디렉토리
 
 | Validator | 가중치 | CheckItem (총 17개) | 배점 |
 |-----------|--------|---------------------|------|
@@ -257,7 +284,7 @@ CLI (run_grading.py)
 - **제한시간**: 900초 (15분) | **합격**: 70점
 - **실행 환경**: macOS/Linux 모두 가능 (subprocess + tmpdir 기반)
 - **샘플 데이터**: `missions/python/level1/mission02/template/access_log_sample.csv`
-- **정답 예시**: `sample_submission_python02/` 디렉토리
+- **정답 예시**: `sample_submissions/python_level1_mission02/` 디렉토리
 
 | Validator | 가중치 | CheckItem (총 7개) | 배점 |
 |-----------|--------|---------------------|------|
@@ -283,7 +310,7 @@ CLI (run_grading.py)
 - **제한시간**: 900초 (15분) | **합격**: 70점
 - **실행 환경**: macOS/Linux 모두 가능 (subprocess + stdin 기반)
 - **제출물**: `prompt_manager.py` 1개 파일
-- **정답 예시**: `sample_submission_python03/` 디렉토리
+- **정답 예시**: `sample_submissions/python_level1_mission03/` 디렉토리
 
 | Validator | 가중치 | CheckItem (총 16개) | 배점 |
 |-----------|--------|---------------------|------|
@@ -340,7 +367,7 @@ CLI (run_grading.py)
 **검증 방식**: 라인 기반 매칭 (해당 토픽 라인에서만 취약 키워드 확인, 타 섹션 간 오염 방지)
 
 **Validator 패턴**: subprocess 실행형 + 파일 I/O형 (tmpdir에 설정 파일 6개 생성 → 학생 코드 실행 → 리포트 파일 검증)
-- **정답 예시**: `sample_submission_linux/` 디렉토리
+- **정답 예시**: `sample_submissions/linux_level2_mission01/` 디렉토리
 
 ---
 
@@ -386,7 +413,7 @@ CLI (run_grading.py)
 - **제한시간**: 1500초 (25분) | **합격**: 70점
 - **실행 환경**: macOS/Linux 모두 가능 (subprocess.run 기반)
 - **제출물**: `mini_git.py`, `cli.py` (2개 파일)
-- **정답 예시**: `sample_submission_algo/` 디렉토리
+- **정답 예시**: `sample_submissions/algo_level2_mission01/` 디렉토리
 
 | Validator | 가중치 | CheckItem (총 16개) | 배점 |
 |-----------|--------|---------------------|------|
@@ -429,7 +456,7 @@ CLI (run_grading.py)
 - **제한시간**: 2400초 (40분) | **합격**: 70점
 - **실행 환경**: macOS/Linux 모두 가능 (subprocess + tmpdir 기반)
 - **제출물**: `commit_analyzer.py` (1개 파일)
-- **정답 예시**: `sample_submission_db/` 디렉토리
+- **정답 예시**: `sample_submissions/db_level3_mission01/` 디렉토리
 
 | Validator | 가중치 | CheckItem (총 19개) | 배점 |
 |-----------|--------|---------------------|------|
@@ -676,11 +703,27 @@ ai_traps:
 | 총 Validator 클래스 | 20개 (Linux 1, Python 8, DS 4, Algo 4, DB 3) |
 | 총 CheckItem 수 | 97개 (Linux level2 7, Python mission01 17 + mission02 7 + mission03 16, DS mission01 15, Algo level2 16, DB level3 19) |
 | 총 AI 트랩 항목 | 27개 (Linux level2 4, Python mission01 4 + mission02 3 + mission03 3, DS mission01 4, Algo level2 4, DB level3 5) |
-| 정답 예시 코드 | `sample_submission/` (Python mission01), `sample_submission_python02/` (Python mission02), `sample_submission_python03/` (Python mission03), `sample_submission_linux/` (Linux level2), `sample_submission_ds/` (DS mission01), `sample_submission_algo/` (Algo level2 mission01), `sample_submission_db/` (DB level3 mission01) |
+| 정답 예시 코드 | `sample_submissions/` 하위 미션별 디렉토리 (python_level1_mission01~03, linux_level2_mission01, ds_level1_mission01, algo_level2_mission01, db_level3_mission01) |
+
+| standalone 테스트 | 7개 미션, 총 97개 pytest 테스트 (전체 PASS) |
+
+### standalone/ — pytest 기반 검증 시스템
+
+기존 프레임워크(BaseValidator, CheckItem, Grader)와 별도로, **미션당 제출물 1개 + pytest 테스트 1개** 구조의 standalone 검증 시스템.
+
+| 미션 | 제출물 | 테스트 | 합본 |
+|------|--------|--------|------|
+| python_level1_mission01 | `book_manager.py` | 17 tests | 4파일 → 1파일 |
+| python_level1_mission02 | `log_analyzer.py` | 7 tests | - |
+| python_level1_mission03 | `prompt_manager.py` | 16 tests | - |
+| linux_level2_mission01 | `auditor.py` | 7 tests | - |
+| ds_level1_mission01 | `mini_redis.py` | 15 tests | 2파일 → 1파일 |
+| algo_level2_mission01 | `mini_git.py` | 16 tests | 2파일 → 1파일 |
+| db_level3_mission01 | `commit_analyzer.py` | 19 tests | - |
 
 ### 미구현 / 향후 작업
 
-- `tests/` — 테스트 코드 미구현 (디렉토리 구조만 존재)
+- `tests/` — 프레임워크 자체 단위 테스트 미구현 (디렉토리 구조만 존재)
 - 추가 미션 확장 가능: 알고리즘, 자료구조, 데이터베이스 등
 
 ### 커밋 히스토리

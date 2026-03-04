@@ -96,4 +96,4 @@ ORDER BY change_count DESC, file_path ASC
 
 ### 정답 코드
 
-정답 코드는 `sample_submission_db/commit_analyzer.py`를 참조하세요.
+정답 코드는 `sample_submissions/db_level3_mission01/commit_analyzer.py`를 참조하세요.
