@@ -8,7 +8,7 @@ import pytest
 # ── 허용 정답 목록 ──
 ACCEPTED = {
     "q1": ["pwd"],
-    "q2": ["mkdir projects"],
+    "q2": ["mkdir projects", "mkdir -p projects"],
     "q3": ["cd projects", "cd projects/", "cd ./projects"],
     "q4": ["ls -la", "ls -al", "ls -l -a", "ls -a -l"],
 }

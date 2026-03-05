@@ -9,7 +9,7 @@ import pytest
 ACCEPTED = {
     "q1": ["touch README.md"],
     "q2": ["cat README.md"],
-    "q3": ["cp README.md docs/", "cp README.md docs"],
+    "q3": ["cp README.md docs/", "cp README.md docs", "cp README.md docs/README.md"],
     "q4": ["rm temp.txt"],
 }
 
