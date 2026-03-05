@@ -1,5 +1,5 @@
 """
-python_level1_mission02 — 서버 접근 로그 분석기 pytest
+python_level1_mission02 - 서버 접근 로그 분석기 pytest
 
 7개 CheckItem을 각각 test 함수로 변환.
 패턴: subprocess + tmpdir (패턴 B)
@@ -156,7 +156,7 @@ def test_top_ips(report_content):
 
 
 def test_ip_order(report_content):
-    """동점 IP 정렬 순서 확인 — AI 트랩 (8점)"""
+    """동점 IP 정렬 순서 확인 - AI 트랩 (8점)"""
     pos_192_1 = report_content.find("192.168.1.1")
     pos_10_5 = report_content.find("10.0.0.5")
     pos_192_20 = report_content.find("192.168.2.20")
@@ -176,7 +176,7 @@ def test_ip_order(report_content):
 
 
 def test_status_ratio(report_content):
-    """HTTP 상태코드 그룹별 비율 확인 — AI 트랩 (10점)"""
+    """HTTP 상태코드 그룹별 비율 확인 - AI 트랩 (10점)"""
     lines = report_content.split("\n")
     for group, ratio in EXPECTED_STATUS.items():
         ratio_str = f"{ratio:.1f}"
@@ -225,7 +225,7 @@ def test_report_sections(report_content):
 
 
 def test_slow_values(report_content):
-    """엔드포인트 평균 응답시간 수치 정확성 확인 — AI 트랩 (7점)"""
+    """엔드포인트 평균 응답시간 수치 정확성 확인 - AI 트랩 (7점)"""
     expected_values = ["2488.8", "502.4", "31.5"]
     for value in expected_values:
         assert value in report_content, (

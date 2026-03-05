@@ -1,5 +1,5 @@
 """
-프롬프트 관리 프로그램 (python_level1_mission03) — pytest 테스트
+프롬프트 관리 프로그램 (python_level1_mission03) - pytest 테스트
 
 3개 Validator(PMStructureValidator, PMCLIValidator, PMInteractionValidator)의
 총 16개 CheckItem을 각각 독립 pytest 함수로 변환.
@@ -63,7 +63,7 @@ def _run_session(stdin_text: str, timeout: int = 5) -> str:
 
 
 # ═══════════════════════════════════════════════════════════
-# PMStructureValidator (AST 분석, 패턴 A) — 4개
+# PMStructureValidator (AST 분석, 패턴 A) - 4개
 # ═══════════════════════════════════════════════════════════
 
 
@@ -132,7 +132,7 @@ def test_no_external_lib():
 
 
 # ═══════════════════════════════════════════════════════════
-# PMCLIValidator (subprocess REPL, 패턴 C) — 7개
+# PMCLIValidator (subprocess REPL, 패턴 C) - 7개
 # ═══════════════════════════════════════════════════════════
 
 
@@ -215,7 +215,7 @@ def test_add_validation():
 
 
 # ═══════════════════════════════════════════════════════════
-# PMInteractionValidator (subprocess REPL, 패턴 C) — 5개
+# PMInteractionValidator (subprocess REPL, 패턴 C) - 5개
 # ═══════════════════════════════════════════════════════════
 
 

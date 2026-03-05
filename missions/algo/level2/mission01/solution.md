@@ -2,9 +2,9 @@
 
 ### 정답 코드
 
-모범 답안은 `sample_submissions/algo_level2_mission01/` 디렉토리에 위치합니다:
-- `sample_submissions/algo_level2_mission01/mini_git.py` — Commit + CommitGraph + InvertedIndex + merge_sort + BFS
-- `sample_submissions/algo_level2_mission01/cli.py` — REPL + 명령어 파싱 + Git 스타일 출력
+모범 답안은 `sample_submissions/algo_level2_mission01/` 디렉토리에 위치합니다.
+- `sample_submissions/algo_level2_mission01/mini_git.py` - Commit + CommitGraph + InvertedIndex + merge_sort + BFS
+- `sample_submissions/algo_level2_mission01/cli.py` - REPL + 명령어 파싱 + Git 스타일 출력
 
 ### 핵심 구현 포인트
 
@@ -59,7 +59,7 @@
 
 ### 테스트 독립성 (조정 1 적용)
 
-연쇄 실패 방지를 위해 GraphAlgorithmValidator는 2개의 독립 세션을 사용:
+연쇄 실패 방지를 위해 GraphAlgorithmValidator는 2개의 독립 세션을 사용.
 
 - **세션 A** (path_same_branch): 선형 체인 `c1→c2→c3` (브랜치 없음)
   - `commit_parent_after_switch` 트랩에 영향받지 않음

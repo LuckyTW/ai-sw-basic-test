@@ -1,4 +1,4 @@
-"""리눅스 서버 보안 감사 도구 — 모범 답안"""
+"""리눅스 서버 보안 감사 도구 - 모범 답안"""
 import argparse
 import csv
 import os

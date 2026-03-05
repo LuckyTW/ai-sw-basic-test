@@ -1,4 +1,4 @@
-"""터미널 파일 관리 — 파일 생성·조회·복사·삭제 명령어 검증 (4개 테스트, 각 25점)"""
+"""터미널 파일 관리 - 파일 생성, 조회, 복사, 삭제 명령어 검증 (4개 테스트, 각 25점)"""
 import importlib.util
 import os
 import re
@@ -50,7 +50,7 @@ def answers(submission_dir):
 
 # ── 테스트 ──
 class TestFileCommands:
-    """터미널 파일 관리 — 파일 생성·조회·복사·삭제"""
+    """터미널 파일 관리 - 파일 생성, 조회, 복사, 삭제"""
 
     def test_q1_touch(self, answers):
         """빈 파일 README.md 생성 (25점)"""

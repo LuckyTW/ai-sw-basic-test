@@ -2,7 +2,7 @@
 
 ### 시험 정보
 - 과정: AI 올인원
-- 단계: AI·SW 기초
+- 단계: AI/SW 기초
 - 난이도: 3 (심화 통합)
 - 권장 시간: 40분
 - Pass 기준: 정답 체크리스트 19개 중 70점 이상 충족
@@ -15,12 +15,12 @@
 
 ### 입력 데이터
 
-`--data-dir` 디렉토리에 다음 4개 CSV 파일이 주어집니다:
+`--data-dir` 디렉토리에 다음 4개 CSV 파일이 주어집니다.
 
-1. **authors.csv** — 작성자 정보 (author_id, name, email, team)
-2. **commits.csv** — 커밋 기록 (hash, message, author_id, parent_hash, branch_name, created_at)
-3. **branches.csv** — 브랜치 정보 (name, head_hash, created_at)
-4. **commit_files.csv** — 커밋별 변경 파일 (id, commit_hash, file_path)
+1. **authors.csv** - 작성자 정보 (author_id, name, email, team)
+2. **commits.csv** - 커밋 기록 (hash, message, author_id, parent_hash, branch_name, created_at)
+3. **branches.csv** - 브랜치 정보 (name, head_hash, created_at)
+4. **commit_files.csv** - 커밋별 변경 파일 (id, commit_hash, file_path)
 
 #### 데이터 특징
 - 커밋 데이터는 DAG(방향 비순환 그래프) 구조로, 각 커밋은 `parent_hash`로 부모 커밋을 참조합니다
@@ -47,7 +47,7 @@
 
 #### 3. 텍스트 리포트 생성
 
-아래 형식에 맞춰 리포트를 생성하세요:
+아래 형식에 맞춰 리포트를 생성하세요.
 
 ```
 === Commit Statistics ===

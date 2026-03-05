@@ -1,4 +1,4 @@
-# git_simulator.py — Git 워크플로우 시뮬레이터 (정답)
+# git_simulator.py - Git 워크플로우 시뮬레이터 (정답)
 
 
 class GitSimulator:

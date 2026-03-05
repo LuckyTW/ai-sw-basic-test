@@ -1,4 +1,4 @@
-# pet_simulator.py — 미니 펫 시뮬레이터
+# pet_simulator.py - 미니 펫 시뮬레이터
 # 아래 클래스와 함수를 완성하세요.
 
 

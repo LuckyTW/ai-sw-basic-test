@@ -47,7 +47,7 @@ class CommitGraph:
         self.commit_count = 0
 
     def commit(self, message: str) -> Commit:
-        """새 커밋 생성 — HEAD 브랜치의 최신 커밋을 부모로 설정"""
+        """새 커밋 생성 - HEAD 브랜치의 최신 커밋을 부모로 설정"""
         self.commit_count += 1
         hash_val = generate_hash(message, self.commit_count)
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -68,7 +68,7 @@ class CommitGraph:
         return c
 
     def branch(self, name: str) -> None:
-        """새 브랜치 생성 — 현재 HEAD 브랜치의 최신 커밋을 가리킴"""
+        """새 브랜치 생성 - 현재 HEAD 브랜치의 최신 커밋을 가리킴"""
         if name in self.branches:
             raise ValueError(f"branch '{name}' already exists")
         self.branches[name] = self.branches[self.head_branch]
@@ -81,7 +81,7 @@ class CommitGraph:
 
 
 class InvertedIndex:
-    """역색인 — 단어/작성자 -> 커밋 해시 매핑"""
+    """역색인 - 단어/작성자 -> 커밋 해시 매핑"""
 
     def __init__(self):
         self.word_index: dict[str, set[str]] = {}

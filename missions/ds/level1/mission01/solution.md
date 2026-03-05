@@ -2,9 +2,9 @@
 
 ### 정답 코드
 
-모범 답안은 `sample_submissions/ds_level1_mission01/` 디렉토리에 위치합니다:
-- `sample_submissions/ds_level1_mission01/lru_cache.py` — Node + DoublyLinkedList + LRUCache
-- `sample_submissions/ds_level1_mission01/cli.py` — REPL + 명령어 파싱 + Redis 출력
+모범 답안은 `sample_submissions/ds_level1_mission01/` 디렉토리에 위치합니다.
+- `sample_submissions/ds_level1_mission01/lru_cache.py` - Node + DoublyLinkedList + LRUCache
+- `sample_submissions/ds_level1_mission01/cli.py` - REPL + 명령어 파싱 + Redis 출력
 
 ### 핵심 구현 포인트
 

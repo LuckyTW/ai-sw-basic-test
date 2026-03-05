@@ -1,4 +1,4 @@
-# Python 도서 관리 시스템 — 모범 답안
+# Python 도서 관리 시스템 - 모범 답안
 
 ## 프로젝트 구조
 
@@ -281,23 +281,23 @@ parser = argparse.ArgumentParser(description="도서 관리 시스템")
 ## 채점 결과 예시 (만점)
 
 ```
-✅ model_dataclass    — Book 클래스가 @dataclass로 정의됨 (7점)
-✅ model_fields       — 필수 필드 존재 (6점)
-✅ model_type_hints   — 타입 힌트 적용 (5점)
-✅ model_post_init    — price 유효성 검증 동작 (7점)
-✅ pattern_yield      — search_books가 yield 제너레이터 (7점) ⚠️
-✅ pattern_decorator  — 사용자 정의 데코레이터 존재 (7점)
-✅ pattern_type_hints — 3개+ 함수에 타입 힌트 (6점)
-✅ pattern_no_any     — Any 비율 30% 미만 (5점) ⚠️
-✅ cli_runnable       — cli.py 존재 (5점)
-✅ cli_help           — --help 동작 (5점) ⚠️
-✅ cli_add            — add 서브커맨드 동작 (8점)
-✅ cli_list           — list 서브커맨드 동작 (7점)
-✅ cli_no_crash       — 크래시 방지 (5점)
-✅ persist_roundtrip  — 왕복 무결성 (7점)
-✅ persist_format     — JSONL 형식 (3점)
-✅ persist_no_pickle  — pickle 미사용 (5점) ⚠️
-✅ persist_integrity  — 필수 필드 포함 (5점)
+✅ model_dataclass    - Book 클래스가 @dataclass로 정의됨 (7점)
+✅ model_fields       - 필수 필드 존재 (6점)
+✅ model_type_hints   - 타입 힌트 적용 (5점)
+✅ model_post_init    - price 유효성 검증 동작 (7점)
+✅ pattern_yield      - search_books가 yield 제너레이터 (7점) ⚠️
+✅ pattern_decorator  - 사용자 정의 데코레이터 존재 (7점)
+✅ pattern_type_hints - 3개+ 함수에 타입 힌트 (6점)
+✅ pattern_no_any     - Any 비율 30% 미만 (5점) ⚠️
+✅ cli_runnable       - cli.py 존재 (5점)
+✅ cli_help           - --help 동작 (5점) ⚠️
+✅ cli_add            - add 서브커맨드 동작 (8점)
+✅ cli_list           - list 서브커맨드 동작 (7점)
+✅ cli_no_crash       - 크래시 방지 (5점)
+✅ persist_roundtrip  - 왕복 무결성 (7점)
+✅ persist_format     - JSONL 형식 (3점)
+✅ persist_no_pickle  - pickle 미사용 (5점) ⚠️
+✅ persist_integrity  - 필수 필드 포함 (5점)
 
 총점: 100/100 ✅ PASS
 ```

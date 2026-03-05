@@ -1,4 +1,4 @@
-# pet_simulator.py — 미니 펫 시뮬레이터 (정답)
+# pet_simulator.py - 미니 펫 시뮬레이터 (정답)
 
 
 class Pet:

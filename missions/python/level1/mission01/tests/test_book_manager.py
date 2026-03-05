@@ -1,5 +1,5 @@
 """
-Python 도서 관리 시스템 — pytest 검증 (17개 테스트)
+Python 도서 관리 시스템 - pytest 검증 (17개 테스트)
 
 4개 Validator(ModelValidator, PatternValidator, CLIValidator, PersistenceValidator)의
 CheckItem 17개를 각각 pytest 함수로 변환.
@@ -151,7 +151,7 @@ def _parse_csv(content: str) -> Optional[List[Dict[str, Any]]]:
 
 
 # ========================================================================
-# ModelValidator (AST + import 분석형) — 4개
+# ModelValidator (AST + import 분석형) - 4개
 # ========================================================================
 
 class TestModelValidator:
@@ -249,7 +249,7 @@ class TestModelValidator:
 
 
 # ========================================================================
-# PatternValidator (AST 분석형) — 4개
+# PatternValidator (AST 분석형) - 4개
 # ========================================================================
 
 class TestPatternValidator:
@@ -373,7 +373,7 @@ class TestPatternValidator:
 
 
 # ========================================================================
-# CLIValidator (subprocess 실행형) — 5개
+# CLIValidator (subprocess 실행형) - 5개
 # ========================================================================
 
 class TestCLIValidator:
@@ -458,7 +458,7 @@ class TestCLIValidator:
 
 
 # ========================================================================
-# PersistenceValidator (import + 파일 I/O형) — 4개
+# PersistenceValidator (import + 파일 I/O형) - 4개
 # ========================================================================
 
 class TestPersistenceValidator:

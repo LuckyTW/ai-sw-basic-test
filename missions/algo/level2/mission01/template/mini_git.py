@@ -60,7 +60,7 @@ class CommitGraph:
 
 
 class InvertedIndex:
-    """역색인 — 단어/작성자 -> 커밋 해시 매핑
+    """역색인 - 단어/작성자 -> 커밋 해시 매핑
 
     TODO: word_index(dict), author_index(dict)를 구현하세요
     """

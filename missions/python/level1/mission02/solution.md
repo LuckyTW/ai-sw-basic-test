@@ -2,8 +2,8 @@
 
 ### 정답 코드
 
-모범 답안은 `sample_submissions/python_level1_mission02/` 디렉토리에 위치합니다:
-- `sample_submissions/python_level1_mission02/log_analyzer.py` — CSV 파싱 + 분석 + 리포트 생성
+모범 답안은 `sample_submissions/python_level1_mission02/` 디렉토리에 위치합니다.
+- `sample_submissions/python_level1_mission02/log_analyzer.py` - CSV 파싱 + 분석 + 리포트 생성
 
 ### 핵심 구현 포인트
 

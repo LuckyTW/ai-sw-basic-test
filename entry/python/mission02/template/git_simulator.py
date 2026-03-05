@@ -1,4 +1,4 @@
-# git_simulator.py — Git 워크플로우 시뮬레이터
+# git_simulator.py - Git 워크플로우 시뮬레이터
 # TODO 표시된 3개 메서드만 구현하세요. 나머지 코드는 수정하지 마세요.
 
 
@@ -27,14 +27,14 @@ class GitSimulator:
         return list(reversed(self.commits))
 
     def create_branch(self, name):
-        """브랜치 생성 — 이미 존재하면 False, 성공하면 True"""
+        """브랜치 생성 - 이미 존재하면 False, 성공하면 True"""
         if name in self.branches:
             return False
         self.branches.append(name)
         return True
 
     def switch(self, name):
-        """브랜치 전환 — 존재하지 않으면 False, 성공하면 True"""
+        """브랜치 전환 - 존재하지 않으면 False, 성공하면 True"""
         if name not in self.branches:
             return False
         self.branch = name

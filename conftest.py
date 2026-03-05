@@ -1,4 +1,4 @@
-"""루트 conftest — --submission-dir CLI 옵션 등록"""
+"""루트 conftest - --submission-dir CLI 옵션 등록"""
 import pytest
 
 

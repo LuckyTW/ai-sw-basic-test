@@ -1,4 +1,4 @@
-"""서버 접근 로그 분석기 — 모범 답안"""
+"""서버 접근 로그 분석기 - 모범 답안"""
 import argparse
 import csv
 from collections import defaultdict

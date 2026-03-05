@@ -2,8 +2,8 @@
 
 ### 정답 코드
 
-모범 답안은 `sample_submissions/linux_level2_mission01/` 디렉토리에 위치합니다:
-- `sample_submissions/linux_level2_mission01/auditor.py` — 설정 파일 파싱 + 보안 감사 + 리포트 생성
+모범 답안은 `sample_submissions/linux_level2_mission01/` 디렉토리에 위치합니다.
+- `sample_submissions/linux_level2_mission01/auditor.py` - 설정 파일 파싱 + 보안 감사 + 리포트 생성
 
 ### 핵심 구현 포인트
 
@@ -124,7 +124,7 @@ if is_sensitive and group_writable:
 |------|------|------|
 | 20022/tcp | Safe | SSH 포트 |
 | 15034/tcp | Info | 커스텀 포트 |
-| 23/tcp | **Vulnerable** | Telnet — 암호화 없는 원격 접속 |
+| 23/tcp | **Vulnerable** | Telnet - 암호화 없는 원격 접속 |
 
 #### 계정 감사
 | 계정 | 판정 | 근거 |

@@ -1,11 +1,11 @@
 """
-Mini Git 커밋 그래프 시뮬레이터 — pytest 테스트 (16개)
+Mini Git 커밋 그래프 시뮬레이터 - pytest 테스트 (16개)
 
 4개 Validator에서 변환:
-- StructureValidator (AST 분석) — 3개
-- BasicCommandValidator (subprocess REPL) — 4개
-- GraphAlgorithmValidator (subprocess REPL) — 5개
-- SearchSortValidator (subprocess REPL) — 4개
+- StructureValidator (AST 분석) - 3개
+- BasicCommandValidator (subprocess REPL) - 4개
+- GraphAlgorithmValidator (subprocess REPL) - 5개
+- SearchSortValidator (subprocess REPL) - 4개
 
 제출물: mini_git.py, cli.py (2파일)
 """
@@ -103,7 +103,7 @@ def _parse_ast() -> ast.Module:
 
 
 # ===========================================================================
-# StructureValidator (AST 분석형) — 3개
+# StructureValidator (AST 분석형) - 3개
 # ===========================================================================
 
 class TestStructure:
@@ -151,18 +151,18 @@ class TestStructure:
         for node in ast.walk(tree):
             if isinstance(node, ast.Call):
                 if isinstance(node.func, ast.Name) and node.func.id == "sorted":
-                    pytest.fail("sorted() 사용 금지 — merge sort를 직접 구현하세요")
+                    pytest.fail("sorted() 사용 금지 - merge sort를 직접 구현하세요")
                 if isinstance(node.func, ast.Attribute) and node.func.attr == "sort":
-                    pytest.fail(".sort() 사용 금지 — merge sort를 직접 구현하세요")
+                    pytest.fail(".sort() 사용 금지 - merge sort를 직접 구현하세요")
 
             if isinstance(node, ast.Import):
                 for alias in node.names:
                     if alias.name == "heapq":
-                        pytest.fail("heapq 사용 금지 — merge sort를 직접 구현하세요")
+                        pytest.fail("heapq 사용 금지 - merge sort를 직접 구현하세요")
 
             if isinstance(node, ast.ImportFrom):
                 if node.module == "heapq":
-                    pytest.fail("heapq 사용 금지 — merge sort를 직접 구현하세요")
+                    pytest.fail("heapq 사용 금지 - merge sort를 직접 구현하세요")
 
     def test_graph_structure(self):
         """커밋 저장소가 dict(해시맵) 기반인지 확인"""
@@ -213,7 +213,7 @@ class TestStructure:
 
 
 # ===========================================================================
-# BasicCommandValidator (subprocess REPL) — 4개
+# BasicCommandValidator (subprocess REPL) - 4개
 # ===========================================================================
 
 class TestBasicCommand:
@@ -221,7 +221,7 @@ class TestBasicCommand:
 
     @pytest.fixture(autouse=True)
     def setup_session(self):
-        """테스트 시나리오 실행 — 기본 명령어 세트"""
+        """테스트 시나리오 실행 - 기본 명령어 세트"""
         commands = (
             'INIT Alice\n'
             'COMMIT "Initial commit"\n'
@@ -300,18 +300,18 @@ class TestBasicCommand:
 
 
 # ===========================================================================
-# GraphAlgorithmValidator (subprocess REPL) — 5개
+# GraphAlgorithmValidator (subprocess REPL) - 5개
 # ===========================================================================
 
 class TestGraphAlgorithm:
     """그래프 알고리즘 검증 (PATH/ANCESTORS/LOG)"""
 
-    # 사전 계산 해시값 — 세션 A: 선형 체인
+    # 사전 계산 해시값 - 세션 A: 선형 체인
     _p1 = _generate_hash("Init", 1)
     _p2 = _generate_hash("Second", 2)
     _p3 = _generate_hash("Third", 3)
 
-    # 사전 계산 해시값 — 세션 B: 브랜치 분기
+    # 사전 계산 해시값 - 세션 B: 브랜치 분기
     _c1 = _generate_hash("Initial commit", 1)
     _c2 = _generate_hash("Add user auth", 2)
     _c3 = _generate_hash("Add login page", 3)
@@ -456,7 +456,7 @@ class TestGraphAlgorithm:
 
 
 # ===========================================================================
-# SearchSortValidator (subprocess REPL) — 4개
+# SearchSortValidator (subprocess REPL) - 4개
 # ===========================================================================
 
 class TestSearchSort:

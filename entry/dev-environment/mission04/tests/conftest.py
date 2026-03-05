@@ -1,4 +1,4 @@
-"""mission04 conftest — submission_dir fixture 제공"""
+"""mission04 conftest - submission_dir fixture 제공"""
 import os
 
 import pytest

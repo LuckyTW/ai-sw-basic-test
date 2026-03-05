@@ -1,4 +1,4 @@
-"""터미널 기초 — 디렉토리 탐색 명령어 검증 (4개 테스트, 각 25점)"""
+"""터미널 기초 - 디렉토리 탐색 명령어 검증 (4개 테스트, 각 25점)"""
 import importlib.util
 import os
 import re
@@ -50,7 +50,7 @@ def answers(submission_dir):
 
 # ── 테스트 ──
 class TestTerminalBasic:
-    """터미널 기초 — 디렉토리 탐색"""
+    """터미널 기초 - 디렉토리 탐색"""
 
     def test_q1_pwd(self, answers):
         """현재 작업 디렉토리 경로 출력 (25점)"""

@@ -1,5 +1,5 @@
 """
-db_level3_mission01 — 커밋 이력 DB 분석기 pytest
+db_level3_mission01 - 커밋 이력 DB 분석기 pytest
 
 총 19개 CheckItem을 각각 test 함수로 변환.
 
@@ -165,7 +165,7 @@ def _find_section_lines(report_lines: List[str], section_header: str) -> List[st
 
 
 # ===========================================================================
-# SchemaValidator 테스트 (5개) — sqlite3 직접 연결
+# SchemaValidator 테스트 (5개) - sqlite3 직접 연결
 # ===========================================================================
 
 class TestSchema:
@@ -204,7 +204,7 @@ class TestSchema:
             conn.close()
 
     def test_root_commit_null(self, db_and_report):
-        """parent_hash NULL 허용 + root commit 존재 — AI 트랩 (5점)"""
+        """parent_hash NULL 허용 + root commit 존재 - AI 트랩 (5점)"""
         db_path, _ = db_and_report
         conn = sqlite3.connect(db_path)
         try:
@@ -257,7 +257,7 @@ class TestSchema:
 
 
 # ===========================================================================
-# AnalysisValidator 테스트 (8개) — 리포트 라인 매칭
+# AnalysisValidator 테스트 (8개) - 리포트 라인 매칭
 # ===========================================================================
 
 class TestAnalysis:
@@ -274,7 +274,7 @@ class TestAnalysis:
         )
 
     def test_author_left_join(self, db_and_report):
-        """황서진(0 commits) 포함 확인 — AI 트랩 (8점)"""
+        """황서진(0 commits) 포함 확인 - AI 트랩 (8점)"""
         _, report_text = db_and_report
         lines = report_text.splitlines()
         found = any("황서진" in line and "0 commits" in line for line in lines)
@@ -294,7 +294,7 @@ class TestAnalysis:
         )
 
     def test_branch_no_commits(self, db_and_report):
-        """hotfix/urgent 0 commits 포함 — AI 트랩 (6점)"""
+        """hotfix/urgent 0 commits 포함 - AI 트랩 (6점)"""
         _, report_text = db_and_report
         lines = report_text.splitlines()
         found = any(
@@ -307,7 +307,7 @@ class TestAnalysis:
         )
 
     def test_distinct_file_count(self, db_and_report):
-        """김민수 5 files changed 확인 — AI 트랩 (6점)"""
+        """김민수 5 files changed 확인 - AI 트랩 (6점)"""
         _, report_text = db_and_report
         lines = report_text.splitlines()
         found = any("김민수" in line and "5 files" in line for line in lines)
@@ -331,7 +331,7 @@ class TestAnalysis:
         )
 
     def test_self_join_parent(self, db_and_report):
-        """커밋 히스토리에 root(a1b2c3d) 포함 — AI 트랩 (8점)"""
+        """커밋 히스토리에 root(a1b2c3d) 포함 - AI 트랩 (8점)"""
         _, report_text = db_and_report
         report_lines = report_text.splitlines()
         history_lines = _find_section_lines(report_lines, "Commit History")
@@ -356,7 +356,7 @@ class TestAnalysis:
 
 
 # ===========================================================================
-# ReportValidator 테스트 (6개) — 리포트 형식/요약 검증
+# ReportValidator 테스트 (6개) - 리포트 형식/요약 검증
 # ===========================================================================
 
 class TestReport:

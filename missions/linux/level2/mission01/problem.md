@@ -2,7 +2,7 @@
 
 ### 시험 정보
 - 과정: AI 올인원
-- 단계: AI·SW 기초
+- 단계: AI/SW 기초
 - 난이도: 2
 - 권장 시간: 25분
 - Pass 기준: 총 100점 중 70점 이상
@@ -13,7 +13,7 @@
 
 #### CLI 인터페이스
 
-`argparse`를 사용하여 다음 인자를 받으세요:
+`argparse`를 사용하여 다음 인자를 받으세요.
 
 ```bash
 python auditor.py --config-dir <설정파일디렉토리> --output <리포트출력경로>
@@ -26,9 +26,9 @@ python auditor.py --config-dir <설정파일디렉토리> --output <리포트출
 
 #### 입력 파일 (6개)
 
-`--config-dir` 디렉토리에 다음 6개 파일이 존재합니다:
+`--config-dir` 디렉토리에 다음 6개 파일이 존재합니다.
 
-##### 1. `sshd_config` — SSH 서버 설정
+##### 1. `sshd_config` - SSH 서버 설정
 
 ```
 Port 20022
@@ -41,7 +41,7 @@ AllowUsers agent-admin agent-dev
 
 > **주의**: `PermitRootLogin`의 각 설정값(`yes`, `no`, `prohibit-password`, `without-password`, `forced-commands-only`)이 의미하는 보안 수준을 정확히 이해하세요. 단순히 "password 아닌 것은 안전"이라고 판단하지 마세요.
 
-##### 2. `ufw_status.txt` — 방화벽 규칙
+##### 2. `ufw_status.txt` - 방화벽 규칙
 
 ```
 Status: active
@@ -60,7 +60,7 @@ To                         Action      From
 
 > **주의**: IANA well-known 위험 포트가 허용되어 있지 않은지 확인하세요. 암호화되지 않은 원격 접속 프로토콜은 보안 위험입니다.
 
-##### 3. `accounts.csv` — 사용자 계정 정보
+##### 3. `accounts.csv` - 사용자 계정 정보
 
 | 컬럼 | 설명 | 예시 |
 |------|------|------|
@@ -72,7 +72,7 @@ To                         Action      From
 
 > **주의**: 최소 권한 원칙(Principle of Least Privilege)에 따라, 각 계정의 그룹 소속이 적절한지 판단하세요. 테스트/개발 계정이 핵심 운영 그룹에 포함되어 있으면 RBAC 위반입니다.
 
-##### 4. `directories.csv` — 디렉토리 권한 정보
+##### 4. `directories.csv` - 디렉토리 권한 정보
 
 | 컬럼 | 설명 | 예시 |
 |------|------|------|
@@ -83,17 +83,17 @@ To                         Action      From
 
 > **주의**: 민감 데이터가 저장되는 디렉토리에 광범위 그룹 쓰기 권한이 부여되어 있지 않은지 확인하세요. 디렉토리 이름과 그룹 범위를 함께 고려하여 판단해야 합니다.
 
-##### 5. `monitor.log` — 시스템 모니터링 로그
+##### 5. `monitor.log` - 시스템 모니터링 로그
 
 ```
 [2025-12-24 09:56:01] PID:48291 CPU:24.8% MEM:5.1% DISK:45G
 ```
 
 - 각 줄은 `[timestamp] PID:xxx CPU:xx.x% MEM:xx.x% DISK:xxG` 형식입니다
-- **잘못된 형식의 줄이 포함될 수 있습니다** — 올바른 형식이 아닌 줄은 건너뛰세요
+- **잘못된 형식의 줄이 포함될 수 있습니다** - 올바른 형식이 아닌 줄은 건너뛰세요
 - CPU/MEM 임계값: CPU 90% 초과 또는 MEM 80% 초과 시 WARNING 표시
 
-##### 6. `crontab.txt` — 예약 작업 목록
+##### 6. `crontab.txt` - 예약 작업 목록
 
 표준 crontab 형식입니다. 등록된 작업의 개수와 내용을 리포트에 포함하세요.
 
@@ -128,7 +128,7 @@ To                         Action      From
 
 ### 출력 형식
 
-5개 섹션으로 구성된 리포트를 생성하세요:
+5개 섹션으로 구성된 리포트를 생성하세요.
 
 ```
 === SSH Security Audit ===

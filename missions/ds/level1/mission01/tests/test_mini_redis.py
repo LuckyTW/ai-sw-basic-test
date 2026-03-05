@@ -1,5 +1,5 @@
 """
-ds_level1_mission01 — Mini LRU 캐시 구현 시험 pytest
+ds_level1_mission01 - Mini LRU 캐시 구현 시험 pytest
 
 4개 Validator에서 총 15개 CheckItem을 각각 pytest 테스트로 변환:
 - StructureValidator  (AST 분석형, 3개)
@@ -145,7 +145,7 @@ def _parse_submission_ast() -> ast.Module:
 
 
 # ══════════════════════════════════════════════════════════
-# StructureValidator (패턴 A, AST 분석) — 3개
+# StructureValidator (패턴 A, AST 분석) - 3개
 # ══════════════════════════════════════════════════════════
 
 
@@ -234,7 +234,7 @@ class TestStructure:
 
 
 # ══════════════════════════════════════════════════════════
-# BasicCommandValidator (패턴 C, subprocess REPL) — 5개
+# BasicCommandValidator (패턴 C, subprocess REPL) - 5개
 # ══════════════════════════════════════════════════════════
 
 
@@ -322,7 +322,7 @@ class TestBasicCommand:
         )
 
     def test_output_format(self):
-        """[AI 트랩] Redis 출력 형식 준수 — OK/(nil)/(integer) N/"value" (5점)"""
+        """[AI 트랩] Redis 출력 형식 준수 - OK/(nil)/(integer) N/"value" (5점)"""
         assert self._responses is not None and len(self._responses) >= 9, (
             "REPL 응답이 충분하지 않습니다"
         )
@@ -352,7 +352,7 @@ class TestBasicCommand:
 
 
 # ══════════════════════════════════════════════════════════
-# LRUValidator (패턴 C, subprocess REPL) — 4개
+# LRUValidator (패턴 C, subprocess REPL) - 4개
 # ══════════════════════════════════════════════════════════
 
 
@@ -432,7 +432,7 @@ class TestLRU:
 
 
 # ══════════════════════════════════════════════════════════
-# TTLValidator (패턴 D, Popen + time.sleep) — 3개
+# TTLValidator (패턴 D, Popen + time.sleep) - 3개
 # ══════════════════════════════════════════════════════════
 
 
@@ -440,7 +440,7 @@ class TestTTL:
     """TTL 동작 검증 (EXPIRE/TTL 기본, lazy deletion, 미존재/미설정 키)"""
 
     def test_expire_ttl_basic(self):
-        """EXPIRE/TTL 기본 동작 — TTL 설정 + 남은 시간 조회 (8점)"""
+        """EXPIRE/TTL 기본 동작 - TTL 설정 + 남은 시간 조회 (8점)"""
         commands = (
             "SET session abc\n"
             "EXPIRE session 100\n"
@@ -466,7 +466,7 @@ class TestTTL:
         )
 
     def test_ttl_expired_get(self):
-        """[AI 트랩] 만료 키 GET → (nil) + DBSIZE 감소 — lazy deletion (6점)"""
+        """[AI 트랩] 만료 키 GET → (nil) + DBSIZE 감소 - lazy deletion (6점)"""
         before_cmds = "SET temp val\nEXPIRE temp 1\nDBSIZE\n"
         after_cmds = "GET temp\nDBSIZE\nexit\n"
 
