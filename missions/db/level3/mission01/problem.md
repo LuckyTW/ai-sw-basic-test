@@ -1,8 +1,8 @@
-## 문항 5: 커밋 이력 DB 분석기
+## 문항: 커밋 이력 DB 분석기
 
 ### 문제
 
-당신은 Git 저장소의 커밋 이력 데이터를 분석하는 도구를 개발해야 합니다.
+Git 저장소의 커밋 이력 데이터를 분석하는 도구를 개발하세요.
 
 4개의 CSV 파일(authors, commits, branches, commit_files)을 SQLite 데이터베이스로 적재한 뒤, SQL 쿼리로 다양한 통계를 분석하고 텍스트 리포트를 생성하세요.
 
@@ -73,7 +73,7 @@ Most Changed File: [파일명] ([N] commits)
 
 ### 제약 사항
 - **Python 표준 라이브러리만 사용** (sqlite3, csv, argparse, os 등)
-- 외부 라이브러리(pandas, sqlalchemy 등) 사용 금지
+- 외부 패키지(pandas, sqlalchemy 등) 사용 금지
 - DB 엔진은 **SQLite** (`sqlite3` 모듈)만 사용
 - `PRAGMA foreign_keys = ON`으로 FK 제약조건 활성화 필수
 
@@ -88,5 +88,6 @@ python commit_analyzer.py --data-dir <CSV디렉토리> --output <리포트경로
 - `--db`: SQLite DB 파일 경로
 
 ### 제출 방식
-- `commit_analyzer.py` 파일 1개 제출
-- 템플릿(`template/commit_analyzer.py`)의 함수 시그니처를 유지하면서 TODO 부분을 구현
+
+`commit_analyzer.py` 1개 파일을 제출합니다.
+- 템플릿(`template/commit_analyzer.py`)의 함수 시그니처를 유지하면서 `TODO` 부분을 구현하세요.

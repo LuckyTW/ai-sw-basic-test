@@ -1,10 +1,10 @@
-## 문항 1 정답지
+## 문항 정답지 - Mini LRU 캐시
 
 ### 정답 코드
 
-모범 답안은 `sample_submissions/ds_level1_mission01/` 디렉토리에 위치합니다.
-- `sample_submissions/ds_level1_mission01/lru_cache.py` - Node + DoublyLinkedList + LRUCache
-- `sample_submissions/ds_level1_mission01/cli.py` - REPL + 명령어 파싱 + Redis 출력
+모범 답안은 `sample_submission/` 디렉토리에 위치합니다.
+- `sample_submission/lru_cache.py` - Node + DoublyLinkedList + LRUCache
+- `sample_submission/cli.py` - REPL + 명령어 파싱 + Redis 출력
 
 ### 핵심 구현 포인트
 

@@ -1,4 +1,4 @@
-## 문항 1: Mini LRU 캐시 구현
+## 문항: Mini LRU 캐시 구현
 
 ### 문제
 
@@ -84,5 +84,5 @@ mini-redis> TTL session
 ### 제출 방식
 
 `lru_cache.py`와 `cli.py` 2개 파일을 제출합니다.
-- 템플릿 파일의 TODO 부분을 구현하세요.
+- 템플릿 파일의 `TODO` 부분을 구현하세요.
 - `cli.py`는 `from lru_cache import LRUCache`로 임포트합니다.

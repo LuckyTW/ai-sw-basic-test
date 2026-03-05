@@ -1,9 +1,9 @@
-## 문항 2 정답지
+## 문항 정답지 - 서버 접근 로그 분석기
 
 ### 정답 코드
 
-모범 답안은 `sample_submissions/python_level1_mission02/` 디렉토리에 위치합니다.
-- `sample_submissions/python_level1_mission02/log_analyzer.py` - CSV 파싱 + 분석 + 리포트 생성
+모범 답안은 `sample_submission/` 디렉토리에 위치합니다.
+- `sample_submission/log_analyzer.py` - CSV 파싱 + 분석 + 리포트 생성
 
 ### 핵심 구현 포인트
 

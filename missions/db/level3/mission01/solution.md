@@ -1,4 +1,4 @@
-## 문항 5 정답지
+## 문항 정답지 - 커밋 이력 DB 분석기
 
 ### 정답 체크리스트
 
@@ -26,7 +26,7 @@
 
 - Pass 기준: 총 100점 중 70점 이상
 
-### AI 트랩 분석
+### AI 트랩 해설
 
 | 트랩 ID | AI 실수 패턴 | 올바른 구현 | 배점 |
 |---------|------------|----------|------|
@@ -96,4 +96,4 @@ ORDER BY change_count DESC, file_path ASC
 
 ### 정답 코드
 
-정답 코드는 `sample_submissions/db_level3_mission01/commit_analyzer.py`를 참조하세요.
+정답 코드는 `sample_submission/commit_analyzer.py`를 참조하세요.

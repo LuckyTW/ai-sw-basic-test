@@ -1,4 +1,4 @@
-# Python 도서 관리 시스템 - 모범 답안
+## 문항 정답지 - Python 도서 관리 시스템
 
 ## 프로젝트 구조
 
@@ -39,8 +39,8 @@ class Book:
         return cls(**data)
 ```
 
-### AI 함정 없음
-- 이 문제는 AI 함정이 없으나, `__post_init__`을 빠뜨리기 쉬움
+### AI 트랩 없음
+- 이 문제는 AI 트랩이 없으나, `__post_init__`을 빠뜨리기 쉬움
 
 ---
 
@@ -77,7 +77,7 @@ def filter_by_price(books: List, max_price: int) -> Generator:
             yield book
 ```
 
-### AI 함정 비교
+### AI 트랩 비교
 
 **❌ AI가 흔히 하는 실수 (yield 미사용)**:
 ```python
@@ -134,7 +134,7 @@ def load_books(filepath: str) -> List[Book]:
     return books
 ```
 
-### AI 함정 비교
+### AI 트랩 비교
 
 **❌ AI가 흔히 하는 실수 (pickle 사용)**:
 ```python
@@ -262,7 +262,7 @@ if __name__ == "__main__":
     main()
 ```
 
-### AI 함정 비교
+### AI 트랩 비교
 
 **❌ AI가 흔히 하는 실수 (--help 미지원)**:
 ```python

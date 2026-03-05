@@ -1,4 +1,4 @@
-## 문항 3: Mini Git 커밋 그래프 시뮬레이터
+## 문항: Mini Git 커밋 그래프 시뮬레이터
 
 ### 문제
 
@@ -112,6 +112,6 @@ mini-git> EXIT
 ### 제출 방식
 
 `mini_git.py`와 `cli.py` 2개 파일을 제출합니다.
-- 템플릿 파일의 TODO 부분을 구현하세요.
+- 템플릿 파일의 `TODO` 부분을 구현하세요.
 - `cli.py`는 `from mini_git import ...`로 임포트합니다.
 - `generate_hash` 함수는 수정하지 마세요.

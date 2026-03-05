@@ -1,8 +1,8 @@
-## 문항 3: 리눅스 서버 보안 감사 도구
+## 문항: 리눅스 서버 보안 감사 도구
 
 ### 문제
 
-리눅스 서버 설정 파일 스냅샷 6개를 분석하여 보안 취약점을 탐지하고, 감사 리포트를 생성하는 프로그램을 작성합니다. SSH 보안, 방화벽 규칙, 계정/그룹 RBAC, 파일 권한, 시스템 모니터링 로그 분석 능력을 측정합니다.
+리눅스 서버 설정 파일 스냅샷 6개를 분석하여 보안 취약점을 탐지하고, 감사 리포트를 생성하는 프로그램을 작성하세요.
 
 #### CLI 인터페이스
 
@@ -32,7 +32,7 @@ MaxAuthTries 3
 AllowUsers agent-admin agent-dev
 ```
 
-> **주의**: `PermitRootLogin`의 각 설정값(`yes`, `no`, `prohibit-password`, `without-password`, `forced-commands-only`)이 의미하는 보안 수준을 정확히 이해하세요. 단순히 "password 아닌 것은 안전"이라고 판단하지 마세요.
+> **주의:** `PermitRootLogin`의 각 설정값(`yes`, `no`, `prohibit-password`, `without-password`, `forced-commands-only`)이 의미하는 보안 수준을 정확히 이해하세요. 단순히 "password 아닌 것은 안전"이라고 판단하지 마세요.
 
 ##### 2. `ufw_status.txt` - 방화벽 규칙
 
@@ -51,7 +51,7 @@ To                         Action      From
 23/tcp (v6)                ALLOW IN    Anywhere (v6)
 ```
 
-> **주의**: IANA well-known 위험 포트가 허용되어 있지 않은지 확인하세요. 암호화되지 않은 원격 접속 프로토콜은 보안 위험입니다.
+> **주의:** IANA well-known 위험 포트가 허용되어 있지 않은지 확인하세요. 암호화되지 않은 원격 접속 프로토콜은 보안 위험입니다.
 
 ##### 3. `accounts.csv` - 사용자 계정 정보
 
@@ -63,7 +63,7 @@ To                         Action      From
 | `home` | 홈 디렉토리 | `/home/agent-admin` |
 | `shell` | 로그인 셸 | `/bin/bash` |
 
-> **주의**: 최소 권한 원칙(Principle of Least Privilege)에 따라, 각 계정의 그룹 소속이 적절한지 판단하세요. 테스트/개발 계정이 핵심 운영 그룹에 포함되어 있으면 RBAC 위반입니다.
+> **주의:** 최소 권한 원칙(Principle of Least Privilege)에 따라, 각 계정의 그룹 소속이 적절한지 판단하세요. 테스트/개발 계정이 핵심 운영 그룹에 포함되어 있으면 RBAC 위반입니다.
 
 ##### 4. `directories.csv` - 디렉토리 권한 정보
 
@@ -74,7 +74,7 @@ To                         Action      From
 | `group` | 소속 그룹 | `agent-admin` |
 | `octal_permission` | 8진수 권한 | `755` |
 
-> **주의**: 민감 데이터가 저장되는 디렉토리에 광범위 그룹 쓰기 권한이 부여되어 있지 않은지 확인하세요. 디렉토리 이름과 그룹 범위를 함께 고려하여 판단해야 합니다.
+> **주의:** 민감 데이터가 저장되는 디렉토리에 광범위 그룹 쓰기 권한이 부여되어 있지 않은지 확인하세요. 디렉토리 이름과 그룹 범위를 함께 고려하여 판단해야 합니다.
 
 ##### 5. `monitor.log` - 시스템 모니터링 로그
 
