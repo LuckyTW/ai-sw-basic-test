@@ -16,15 +16,6 @@ ENV/
 *.swo
 *~
 
-# 채점 결과
-results/*.json
-results/*.md
-!results/.gitkeep
-
-# 학습자 제출물
-submissions/
-!submissions/.gitkeep
-
 # 테스트 캐시
 .pytest_cache/
 .coverage

@@ -1,0 +1,11 @@
+[project]
+name = "ai-sw-fundamentals"
+version = "2.0.0"
+description = "PBL 학습 성취도 자동 채점 시스템 (pytest 기반)"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["missions", "entry"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
