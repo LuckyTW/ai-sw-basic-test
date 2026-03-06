@@ -3,8 +3,7 @@
 ### 정답 코드
 
 모범 답안은 `sample_submission/` 디렉토리에 위치합니다.
-- `sample_submission/mini_git.py` - Commit + CommitGraph + InvertedIndex + merge_sort + BFS
-- `sample_submission/cli.py` - REPL + 명령어 파싱 + Git 스타일 출력
+- `sample_submission/mini_git.py` - Commit + CommitGraph + InvertedIndex + merge_sort + BFS + REPL CLI
 
 ### 핵심 구현 포인트
 
@@ -22,7 +21,7 @@
 | 1 | Commit 클래스에 hash/message/author/timestamp/parents 존재 | 8 | AST 분석 | - |
 | 2 | sorted()/list.sort()/heapq 미사용 | 7 | AST Import/Call 검사 | **Yes** |
 | 3 | dict 기반 커밋 저장소 | 5 | AST 분석 | - |
-| 4 | cli.py 실행 + 프롬프트 출력 | 3 | subprocess | - |
+| 4 | mini_git.py 실행 + 프롬프트 출력 | 3 | subprocess | - |
 | 5 | INIT 명령어 정상 동작 | 5 | subprocess | - |
 | 6 | COMMIT 출력 형식 정확 | 6 | subprocess | - |
 | 7 | BRANCH/SWITCH 정상 동작 | 6 | subprocess | - |

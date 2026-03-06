@@ -1,51 +1,72 @@
-## 문항: 미니 펫 시뮬레이터
+## 문항: Git 브랜치 워크플로우
 
 ### 문제
 
-가상 펫을 관리하는 **미니 펫 시뮬레이터**를 구현하세요.
+Git 브랜치를 활용한 워크플로우의 기본 명령어를 작성하세요.
 
-펫에게 밥을 주고(`feed`) 놀아주면(`play`) 배고픔과 행복 수치가 변합니다.
-여러 마리를 관리하는 펫샵(`PetShop`) 클래스와, 전체 현황을 요약하는 함수(`summarize`)도 구현해야 합니다.
+#### 작성 예시
 
-### 구현 요구사항
+> **상황:** 최신 커밋의 변경 내용을 확인하고 싶다
 
-#### 1. `Pet` 클래스
-
-| 메서드 | 설명 |
-|--------|------|
-| `__init__(self, name, species, hunger=50, happiness=50)` | 이름(str), 종류(str), 배고픔(int, 0~100), 행복(int, 0~100) |
-| `feed(self)` | 배고픔 20 감소 (최소 0) |
-| `play(self)` | 행복 20 증가 (최대 100), 배고픔 10 증가 (최대 100) |
-| `status(self) -> str` | `"[종류] 이름 - 배고픔: N, 행복: N"` 형식 문자열 반환 |
-
-**예시:**
 ```python
-pet = Pet("나비", "고양이")
-pet.feed()
-print(pet.status())  # [고양이] 나비 - 배고픔: 30, 행복: 50
-pet.play()
-print(pet.status())  # [고양이] 나비 - 배고픔: 40, 행복: 70
+"q0": "git show"
 ```
 
-#### 2. `PetShop` 클래스
+위와 같이, 각 상황에 맞는 Git 명령어를 `answers.py`에 문자열로 작성하세요.
 
-| 메서드 | 설명 |
-|--------|------|
-| `__init__(self)` | 빈 펫 목록으로 시작 |
-| `add_pet(self, pet)` | 펫 추가 |
-| `find_pet(self, name)` | 이름으로 검색, 없으면 `None` 반환 |
-| `get_hungry_pets(self, threshold=70)` | 배고픔이 threshold **이상**인 펫 리스트 반환 |
-| `to_dict_list(self)` | `[{"name": ..., "species": ..., "hunger": ..., "happiness": ...}]` 형식 반환 |
+#### Q1. 커밋 생성
 
-#### 3. `summarize(shop)` 독립 함수
+스테이징된 파일을 커밋하세요. `-m` 옵션으로 커밋 메시지를 `initial commit`으로 작성합니다. 메시지는 반드시 따옴표로 감싸야 합니다.
 
-- 형식: `"총 N마리 | 평균 행복도: X.X"`
-- 빈 펫샵: `"총 0마리 | 평균 행복도: 0.0"`
+**실행 결과:**
+```
+[main (root-commit) a1b2c3d] initial commit
+ 1 file changed, 1 insertion(+)
+```
+
+#### Q2. 브랜치 생성
+
+`feature`라는 이름의 새 브랜치를 생성하세요. 현재 브랜치에서 전환하지 않습니다.
+
+**실행 결과:**
+```
+(브랜치가 생성되며, 출력 없음)
+```
+
+#### Q3. 브랜치 전환
+
+`feature` 브랜치로 전환하세요.
+
+**실행 결과:**
+```
+Switched to branch 'feature'
+```
+
+#### Q4. 브랜치 병합
+
+`feature` 브랜치의 변경 사항을 현재 브랜치에 병합하세요.
+
+**실행 결과:**
+```
+Updating a1b2c3d..d4e5f6a
+Fast-forward
+ feature.txt | 1 +
+ 1 file changed, 1 insertion(+)
+```
 
 ### 제약 사항
-- **외부 라이브러리 사용 금지** - `import` 문을 사용하지 마세요 (표준 라이브러리 포함)
-- Python 기본 문법(클래스, 메서드, 조건문, 반복문, 리스트, 딕셔너리)만으로 구현하세요
+- 각 답안은 한 줄짜리 명령어 문자열입니다.
+- 불필요한 옵션 없이 가장 간결한 형태로 작성하세요.
 
 ### 제출 방식
-- `pet_simulator.py` 파일 1개를 제출합니다.
-- `template/pet_simulator.py`의 빈 구현(`pass`)을 채우세요.
+`answers.py` 파일의 `q1`~`q4` 값을 채워 제출하세요.
+
+```python
+# answers.py
+answers = {
+    "q1": "",
+    "q2": "",
+    "q3": "",
+    "q4": "",
+}
+```

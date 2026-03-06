@@ -4,7 +4,7 @@ Python 도서 관리 시스템 - pytest 검증 (17개 테스트)
 4개 Validator(ModelValidator, PatternValidator, CLIValidator, PersistenceValidator)의
 CheckItem 17개를 각각 pytest 함수로 변환.
 
-제출물: models.py, filters.py, storage.py, cli.py (4파일)
+제출물: book_manager.py (1파일)
 """
 import ast
 import csv
@@ -62,9 +62,9 @@ def _import_module(module_name: str):
 
 
 def _run_cli(args: list, timeout: int = 10, cwd: Optional[str] = None) -> Optional[subprocess.CompletedProcess]:
-    """cli.py를 subprocess로 실행"""
+    """book_manager.py를 subprocess로 실행"""
     work_dir = cwd or _SUBMISSION_DIR
-    cli_path = os.path.join(work_dir, "cli.py")
+    cli_path = os.path.join(work_dir, "book_manager.py")
     try:
         return subprocess.run(
             [sys.executable, cli_path] + args,
@@ -174,14 +174,14 @@ class TestModelValidator:
         assert has_decorator, "Book 클래스에 @dataclass 데코레이터가 없습니다"
 
         # 런타임 확인
-        models = _import_module("models")
+        models = _import_module("book_manager")
         book_cls = getattr(models, "Book", None)
         assert book_cls is not None, "models 모듈에서 Book 클래스를 찾을 수 없습니다"
         assert hasattr(book_cls, "__dataclass_fields__"), "Book이 dataclass가 아닙니다"
 
     def test_model_fields(self):
         """Book에 필수 필드(isbn, title, author, price, is_available)가 있는지 확인 (6점)"""
-        models = _import_module("models")
+        models = _import_module("book_manager")
         book_cls = getattr(models, "Book", None)
         assert book_cls is not None, "models 모듈에서 Book 클래스를 찾을 수 없습니다"
 
@@ -235,7 +235,7 @@ class TestModelValidator:
 
     def test_model_post_init(self):
         """price < 0일 때 ValueError가 발생하는지 확인 (7점)"""
-        models = _import_module("models")
+        models = _import_module("book_manager")
         book_cls = getattr(models, "Book", None)
         assert book_cls is not None, "models 모듈에서 Book 클래스를 찾을 수 없습니다"
 
@@ -271,7 +271,7 @@ class TestPatternValidator:
         assert has_yield_in_search, "search_books 함수에 yield가 없습니다"
 
         # 2. 런타임 확인: isgeneratorfunction 또는 __wrapped__ 추적
-        filters = _import_module("filters")
+        filters = _import_module("book_manager")
         search_fn = getattr(filters, "search_books", None)
         if search_fn is not None:
             # 데코레이터 감싸기 고려: __wrapped__ 추적
@@ -286,7 +286,7 @@ class TestPatternValidator:
                 return  # 통과
 
             # 3. 실제 호출하여 generator 반환 확인
-            models = _import_module("models")
+            models = _import_module("book_manager")
             book_cls = getattr(models, "Book", None)
             if book_cls is not None:
                 try:
@@ -377,12 +377,12 @@ class TestPatternValidator:
 # ========================================================================
 
 class TestCLIValidator:
-    """CLI 서브커맨드 동작 검증 (cli.py, --help, add, list, 크래시 방지)"""
+    """CLI 서브커맨드 동작 검증 (book_manager.py, --help, add, list, 크래시 방지)"""
 
     def test_cli_runnable(self):
-        """cli.py 파일이 존재하고 실행 가능한지 확인 (5점)"""
-        cli_path = os.path.join(_SUBMISSION_DIR, "cli.py")
-        assert os.path.isfile(cli_path), "cli.py가 존재하지 않습니다"
+        """book_manager.py 파일이 존재하고 실행 가능한지 확인 (5점)"""
+        cli_path = os.path.join(_SUBMISSION_DIR, "book_manager.py")
+        assert os.path.isfile(cli_path), "book_manager.py가 존재하지 않습니다"
 
     def test_cli_help(self):
         """[AI 트랩] --help 옵션이 정상 동작하는지 확인 (5점)"""
@@ -449,9 +449,9 @@ class TestCLIValidator:
     def test_cli_no_crash(self):
         """잘못된 입력에 Traceback이 출력되지 않는지 확인 (5점)"""
         result = _run_cli(["invalid_command_xyz"])
-        # cli.py 자체가 없으면 별도 감점 (cli_runnable에서 처리)
+        # book_manager.py 자체가 없으면 별도 감점 (cli_runnable에서 처리)
         if result is None:
-            cli_path = os.path.join(_SUBMISSION_DIR, "cli.py")
+            cli_path = os.path.join(_SUBMISSION_DIR, "book_manager.py")
             assert not os.path.isfile(cli_path), "실행에 실패했지만 파일은 존재합니다"
             return
         assert "Traceback" not in result.stderr, f"잘못된 입력에 Traceback이 발생했습니다:\n{result.stderr}"
@@ -467,7 +467,7 @@ class TestPersistenceValidator:
     @staticmethod
     def _make_test_books():
         """테스트용 Book 인스턴스 리스트 생성"""
-        models = _import_module("models")
+        models = _import_module("book_manager")
         book_cls = getattr(models, "Book", None)
         if book_cls is None:
             return None
@@ -482,7 +482,7 @@ class TestPersistenceValidator:
     @staticmethod
     def _do_save(books, tmpdir):
         """save_books 호출, 생성된 파일 경로 반환"""
-        storage = _import_module("storage")
+        storage = _import_module("book_manager")
         save_fn = getattr(storage, "save_books", None)
         if save_fn is None:
             return None
@@ -519,7 +519,7 @@ class TestPersistenceValidator:
             saved_file = self._do_save(books, tmpdir)
             assert saved_file is not None, "save_books가 파일을 생성하지 못했습니다"
 
-            storage = _import_module("storage")
+            storage = _import_module("book_manager")
             load_fn = getattr(storage, "load_books", None)
             assert load_fn is not None, "load_books 함수를 찾을 수 없습니다"
 

@@ -20,7 +20,7 @@
 | 14 | `report_created` - 리포트 파일 생성 확인 | 3 | - | 파일 존재 + 비어있지 않음 |
 | 15 | `report_sections` - 5개 섹션 헤더 존재 | 4 | - | 문자열 매칭 |
 | 16 | `top_author` - Most Active Author = 김민수(4) | 7 | - | 라인 매칭 |
-| 17 | `commit_total` - Total Commits: 12 확인 | 6 | - | 라인 매칭 |
+| 17 | `commit_total` - Total Commits: 12 확인 | 5 | - | 라인 매칭 |
 | 18 | `summary_stats` - 요약 3항목 (Author/Branch/File) 존재 | 8 | - | 문자열 매칭 |
 | 19 | `file_ranking_order` - requirements.txt가 1위 | 7 | - | 섹션 내 순위 확인 |
 

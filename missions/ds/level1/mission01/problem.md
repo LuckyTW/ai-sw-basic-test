@@ -6,7 +6,7 @@
 
 #### 핵심 요구사항
 
-1. **LRU 캐시 (`lru_cache.py`)**
+1. **LRU 캐시 + CLI (`lru_cache.py`)**
    - `Node` 클래스: `prev`, `next`, `key`, `value` 속성을 가진 이중 연결 리스트 노드
    - `DoublyLinkedList` 클래스: 센티널(head/tail) 기반 이중 연결 리스트
      - `insert_front()`, `remove()`, `remove_back()`, `move_to_front()` 메서드
@@ -20,16 +20,10 @@
      - `ttl(key)` → -2(미존재), -1(TTL 미설정), >=0(남은 초)
      - `config_set("maxmemory", N)` → "OK" (maxmemory 초과 시 LRU 키 제거)
      - `info_memory()` → `{"used_memory": N, "maxmemory": N, "evicted_keys": N}`
-
-2. **CLI (`cli.py`)**
-   - `mini-redis> ` 프롬프트로 대화형 REPL
-   - Redis 호환 출력 형식:
-     - SET 성공 → `OK`
-     - GET 값 → `"value"` (쌍따옴표 포함!)
-     - GET 미존재 → `(nil)`
-     - 정수 결과 → `(integer) N`
-   - `EXIT` 또는 `QUIT`으로 종료
-   - `CONFIG SET maxmemory N`, `INFO memory` 지원
+   - `main()` → `mini-redis> ` 프롬프트로 대화형 REPL
+     - Redis 호환 출력 형식: `OK` / `"value"` / `(nil)` / `(integer) N`
+     - `EXIT` 또는 `QUIT`으로 종료
+     - `CONFIG SET maxmemory N`, `INFO memory` 지원
 
 ### 제약 사항
 - **OrderedDict, deque, functools.lru_cache 사용 금지** (Node로 직접 구현)
@@ -83,6 +77,5 @@ mini-redis> TTL session
 
 ### 제출 방식
 
-`lru_cache.py`와 `cli.py` 2개 파일을 제출합니다.
+`lru_cache.py` 1개 파일을 제출합니다.
 - 템플릿 파일의 `TODO` 부분을 구현하세요.
-- `cli.py`는 `from lru_cache import LRUCache`로 임포트합니다.

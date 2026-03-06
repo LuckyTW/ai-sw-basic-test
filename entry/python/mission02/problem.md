@@ -1,61 +1,51 @@
-## 문항: Git 워크플로우 시뮬레이터
+## 문항: 미니 펫 시뮬레이터
 
 ### 문제
 
-Git의 기본 워크플로우를 시뮬레이션하는 `GitSimulator` 클래스의 **일부 메서드**를 완성하세요.
+가상 펫을 관리하는 **미니 펫 시뮬레이터**를 구현하세요.
 
-대부분의 코드는 이미 작성되어 있습니다.
-`template/git_simulator.py`에서 `# TODO` 표시된 **3개 메서드만** 구현하면 됩니다.
+펫에게 밥을 주고(`feed`) 놀아주면(`play`) 배고픔과 행복 수치가 변합니다.
+여러 마리를 관리하는 펫샵(`PetShop`) 클래스와, 전체 현황을 요약하는 함수(`summarize`)도 구현해야 합니다.
 
-### 이미 구현된 코드 (수정하지 마세요)
+### 구현 요구사항
 
-| 메서드/함수 | 설명 |
-|------------|------|
-| `__init__(self)` | 초기 상태 설정 - `staged=[]`, `commits=[]`, `branch="main"`, `branches=["main"]` |
-| `log(self)` | 커밋 이력을 역순(최신 먼저)으로 반환 |
-| `create_branch(self, name)` | 브랜치 생성 (중복 시 `False`) |
-| `switch(self, name)` | 브랜치 전환 (없으면 `False`) |
-| `summarize(simulator)` | 전체 현황 요약 문자열 반환 |
+#### 1. `Pet` 클래스
 
-### 구현할 메서드 (TODO 3개)
+| 메서드 | 설명 |
+|--------|------|
+| `__init__(self, name, species, hunger=50, happiness=50)` | 이름(str), 종류(str), 배고픔(int, 0~100), 행복(int, 0~100) |
+| `feed(self)` | 배고픔 20 감소 (최소 0) |
+| `play(self)` | 행복 20 증가 (최대 100), 배고픔 10 증가 (최대 100) |
+| `status(self) -> str` | `"[종류] 이름 - 배고픔: N, 행복: N"` 형식 문자열 반환 |
 
-#### 1. `add(self, filename)`
-- 파일을 스테이징 영역(`self.staged`)에 추가합니다
-- 이미 `self.staged`에 있는 파일이면 추가하지 않습니다 (중복 방지)
-
-#### 2. `commit(self, message)`
-- `self.staged`가 비어있으면 → `"nothing to commit"` 반환
-- 비어있지 않으면:
-  - `self.commits`에 딕셔너리 추가: `{"message": message, "files": staged 복사본, "branch": self.branch}`
-  - `self.staged`를 빈 리스트로 초기화
-  - `"committed: {message}"` 반환
-
-> **힌트:** `staged 복사본`은 `list(self.staged)` 로 만들 수 있습니다.
-
-#### 3. `status(self)`
-- 아래 형식의 문자열을 반환합니다.
-  - `"브랜치: {self.branch}, 스테이징: {N}개, 커밋: {M}개"`
-  - `N` = `self.staged`의 길이, `M` = `self.commits`의 길이
-
-### 실행 예시
-
+**예시:**
 ```python
-sim = GitSimulator()
-sim.add("README.md")
-sim.add("main.py")
-sim.add("README.md")             # 이미 있으므로 무시됨
-
-print(len(sim.staged))            # 2
-print(sim.commit("initial commit"))  # committed: initial commit
-print(sim.status())               # 브랜치: main, 스테이징: 0개, 커밋: 1개
-print(sim.commit("empty"))        # nothing to commit
+pet = Pet("나비", "고양이")
+pet.feed()
+print(pet.status())  # [고양이] 나비 - 배고픔: 30, 행복: 50
+pet.play()
+print(pet.status())  # [고양이] 나비 - 배고픔: 40, 행복: 70
 ```
 
+#### 2. `PetShop` 클래스
+
+| 메서드 | 설명 |
+|--------|------|
+| `__init__(self)` | 빈 펫 목록으로 시작 |
+| `add_pet(self, pet)` | 펫 추가 |
+| `find_pet(self, name)` | 이름으로 검색, 없으면 `None` 반환 |
+| `get_hungry_pets(self, threshold=70)` | 배고픔이 threshold **이상**인 펫 리스트 반환 |
+| `to_dict_list(self)` | `[{"name": ..., "species": ..., "hunger": ..., "happiness": ...}]` 형식 반환 |
+
+#### 3. `summarize(shop)` 독립 함수
+
+- 형식: `"총 N마리 | 평균 행복도: X.X"`
+- 빈 펫샵: `"총 0마리 | 평균 행복도: 0.0"`
+
 ### 제약 사항
-- **외부 라이브러리 사용 금지** - `import` 문을 추가하지 마세요
-- 이미 구현된 코드를 수정하지 마세요
-- `# TODO` 표시된 3개 메서드만 구현하세요
+- **외부 라이브러리 사용 금지** - `import` 문을 사용하지 마세요 (표준 라이브러리 포함)
+- Python 기본 문법(클래스, 메서드, 조건문, 반복문, 리스트, 딕셔너리)만으로 구현하세요
 
 ### 제출 방식
-- `git_simulator.py` 파일 1개를 제출합니다.
-- `template/git_simulator.py`의 `# TODO` 부분을 채우세요.
+- `pet_simulator.py` 파일 1개를 제출합니다.
+- `template/pet_simulator.py`의 빈 구현(`pass`)을 채우세요.

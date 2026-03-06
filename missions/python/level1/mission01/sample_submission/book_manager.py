@@ -1,7 +1,84 @@
 import argparse
+import functools
+import json
 import sys
-from models import Book
-from storage import save_books, load_books
+from dataclasses import dataclass, asdict
+from typing import List, Generator, Callable
+
+
+# -- 데이터 모델 --
+
+@dataclass
+class Book:
+    """도서 데이터 모델"""
+    isbn: str
+    title: str
+    author: str
+    price: int
+    is_available: bool = True
+
+    def __post_init__(self) -> None:
+        if self.price < 0:
+            raise ValueError(f"가격은 0 이상이어야 합니다: {self.price}")
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "Book":
+        return cls(**data)
+
+
+# -- 검색/필터링 --
+
+def validate_args(func: Callable) -> Callable:
+    """인자 타입 검증 데코레이터"""
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        for arg in args:
+            if arg is None:
+                raise TypeError("None은 허용되지 않습니다")
+        return func(*args, **kwargs)
+    return wrapper
+
+
+@validate_args
+def search_books(books: List, keyword: str) -> Generator:
+    """도서 목록에서 keyword가 제목에 포함된 도서를 yield합니다."""
+    for book in books:
+        if keyword.lower() in book.title.lower():
+            yield book
+
+
+def filter_by_price(books: List, max_price: int) -> Generator:
+    """가격 기준 필터링"""
+    for book in books:
+        if book.price <= max_price:
+            yield book
+
+
+# -- 저장/로드 --
+
+def save_books(books: List[Book], filepath: str) -> None:
+    """도서 목록을 JSONL 형식으로 저장"""
+    with open(filepath, "w", encoding="utf-8") as f:
+        for book in books:
+            f.write(json.dumps(book.to_dict(), ensure_ascii=False) + "\n")
+
+
+def load_books(filepath: str) -> List[Book]:
+    """JSONL 파일에서 도서 목록을 로드"""
+    books = []
+    with open(filepath, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                data = json.loads(line)
+                books.append(Book.from_dict(data))
+    return books
+
+
+# -- CLI --
 
 DATA_FILE = "books.jsonl"
 
@@ -44,8 +121,6 @@ def cmd_list(args: argparse.Namespace) -> None:
 
 def cmd_search(args: argparse.Namespace) -> None:
     """도서 검색"""
-    from filters import search_books
-
     try:
         books = load_books(DATA_FILE)
     except FileNotFoundError:

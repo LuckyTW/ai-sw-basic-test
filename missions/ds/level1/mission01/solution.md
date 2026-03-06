@@ -3,8 +3,7 @@
 ### 정답 코드
 
 모범 답안은 `sample_submission/` 디렉토리에 위치합니다.
-- `sample_submission/lru_cache.py` - Node + DoublyLinkedList + LRUCache
-- `sample_submission/cli.py` - REPL + 명령어 파싱 + Redis 출력
+- `sample_submission/lru_cache.py` - Node + DoublyLinkedList + LRUCache + REPL CLI
 
 ### 핵심 구현 포인트
 
@@ -21,7 +20,7 @@
 | 1 | Node 클래스에 prev/next/key/value 존재 | 11 | AST 분석 | - |
 | 2 | OrderedDict/deque/lru_cache 미사용 | 7 | AST Import 검사 | **Yes** |
 | 3 | 이중 연결 리스트 조작 메서드 존재 | 7 | AST FunctionDef 검사 | - |
-| 4 | cli.py 실행 + 프롬프트 출력 | 3 | subprocess | - |
+| 4 | lru_cache.py 실행 + 프롬프트 출력 | 3 | subprocess | - |
 | 5 | SET/GET 기본 동작 | 8 | subprocess | - |
 | 6 | DEL 후 GET → (nil) | 4 | subprocess | - |
 | 7 | EXISTS/DBSIZE 정확한 카운트 | 5 | subprocess | - |

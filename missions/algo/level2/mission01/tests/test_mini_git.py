@@ -7,7 +7,7 @@ Mini Git 커밋 그래프 시뮬레이터 - pytest 테스트 (16개)
 - GraphAlgorithmValidator (subprocess REPL) - 5개
 - SearchSortValidator (subprocess REPL) - 4개
 
-제출물: mini_git.py, cli.py (2파일)
+제출물: mini_git.py (1파일)
 """
 import ast
 import hashlib
@@ -66,7 +66,7 @@ def _parse_responses(stdout: str) -> List[str]:
 
 def _run_session(stdin_text: str, timeout: int = 10) -> Optional[str]:
     """REPL 세션 실행 후 stdout 반환"""
-    cli_path = os.path.join(_SUBMISSION_DIR, "cli.py")
+    cli_path = os.path.join(_SUBMISSION_DIR, "mini_git.py")
     try:
         result = subprocess.run(
             [sys.executable, cli_path],
@@ -235,11 +235,11 @@ class TestBasicCommand:
         self.responses = _run_and_parse(commands)
 
     def test_cli_runnable(self):
-        """cli.py 실행 + mini-git> 프롬프트 출력 확인"""
+        """mini_git.py 실행 + mini-git> 프롬프트 출력 확인"""
         stdout = _run_session("exit\n")
-        assert stdout is not None, "cli.py 실행 실패"
+        assert stdout is not None, "mini_git.py 실행 실패"
         assert "mini-git>" in stdout, (
-            "cli.py에서 'mini-git> ' 프롬프트를 출력하세요"
+            "mini_git.py에서 'mini-git> ' 프롬프트를 출력하세요"
         )
 
     def test_init_command(self):

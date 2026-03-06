@@ -64,20 +64,6 @@ class TestStructure:
         }
         assert "GitSimulator" in class_names, "GitSimulator 클래스가 정의되어 있지 않습니다"
 
-        func_names = {
-            node.name
-            for node in ast.walk(tree)
-            if isinstance(node, ast.FunctionDef)
-               and not isinstance(
-                   next(
-                       (p for p in ast.walk(tree)
-                        if isinstance(p, ast.ClassDef)
-                        and node in ast.walk(p)),
-                       None,
-                   ),
-                   ast.ClassDef,
-               )
-        }
         # 모듈 최상위 함수 중 summarize 확인
         top_level_funcs = {
             node.name

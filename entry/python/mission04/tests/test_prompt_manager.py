@@ -1,5 +1,5 @@
 """
-프롬프트 관리 프로그램 (python_level1_mission03) - pytest 테스트
+프롬프트 관리 프로그램 (entry_python_mission04) - pytest 테스트
 
 3개 Validator(PMStructureValidator, PMCLIValidator, PMInteractionValidator)의
 총 16개 CheckItem을 각각 독립 pytest 함수로 변환.
@@ -209,7 +209,7 @@ def test_add_validation():
     for line in lines:
         stripped = line.strip()
         if stripped.startswith("4.") and "[" in stripped:
-            raise AssertionError(
+            pytest.fail(
                 "빈 제목 입력 시 프롬프트가 추가되어서는 안 됩니다 (4번째 항목 발견)"
             )
 
@@ -236,9 +236,14 @@ def test_favorite_toggle():
     output = _run_session(stdin)
     assert output, "프로그램 출력이 없습니다"
 
-    for line in output.split("\n"):
+    # show_favorites(메뉴 7) 출력 구간만 검사 - manage_favorite에서
+    # 토글 전 목록을 보여주는 학습자 패턴에서 오판 방지
+    sections = output.split("=== 프롬프트 관리 프로그램 ===")
+    # sections[-2]가 show_favorites(메뉴 7) 호출 결과 구간
+    fav_section = sections[-2] if len(sections) >= 3 else output
+    for line in fav_section.split("\n"):
         if "블로그 글 작성 도우미" in line and "\u2b50" in line:
-            raise AssertionError(
+            pytest.fail(
                 "즐겨찾기 토글 실패: True->False 해제 후에도 "
                 "'블로그 글 작성 도우미'가 즐겨찾기 목록에 남아있습니다"
             )

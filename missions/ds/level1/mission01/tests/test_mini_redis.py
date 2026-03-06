@@ -7,7 +7,7 @@ ds_level1_mission01 - Mini LRU 캐시 구현 시험 pytest
 - LRUValidator (subprocess REPL, 4개)
 - TTLValidator (Popen + time.sleep, 3개)
 
-제출물: lru_cache.py, cli.py (2파일)
+제출물: lru_cache.py (1파일)
 """
 import ast
 import os
@@ -59,7 +59,7 @@ def _parse_responses(stdout: str) -> list[str]:
 
 def _run_repl(commands: str, timeout: int = 10) -> Optional[list[str]]:
     """mini_redis REPL을 subprocess.run으로 실행하고 응답 리스트 반환"""
-    cli_path = os.path.join(_SUBMISSION_DIR, "cli.py")
+    cli_path = os.path.join(_SUBMISSION_DIR, "lru_cache.py")
     try:
         result = subprocess.run(
             [sys.executable, cli_path],
@@ -100,7 +100,7 @@ def _run_popen_session(
     timeout: int = 10,
 ) -> Optional[list[str]]:
     """Popen으로 REPL 실행 → 명령 전송 → sleep → 추가 명령 → 결과 수집"""
-    cli_path = os.path.join(_SUBMISSION_DIR, "cli.py")
+    cli_path = os.path.join(_SUBMISSION_DIR, "lru_cache.py")
     proc = None
     try:
         proc = subprocess.Popen(
@@ -192,26 +192,23 @@ class TestStructure:
         """[AI 트랩] OrderedDict/deque/functools.lru_cache를 사용하지 않는지 확인 (7점)"""
         tree = _parse_submission_ast()
         forbidden_names = {"OrderedDict", "deque", "lru_cache"}
-        forbidden_modules = {"collections", "functools"}
 
         for node in ast.walk(tree):
-            if isinstance(node, ast.Import):
-                for alias in node.names:
-                    assert alias.name not in forbidden_modules, (
-                        f"금지 모듈 import 감지: {alias.name}"
-                    )
-
+            # from collections import OrderedDict / deque 차단
+            # from functools import lru_cache 차단
             if isinstance(node, ast.ImportFrom):
-                if node.module in forbidden_modules:
+                if node.module in ("collections", "functools"):
                     for alias in node.names:
                         assert alias.name not in forbidden_names, (
                             f"금지 import 감지: from {node.module} import {alias.name}"
                         )
-                if node.module == "functools":
-                    for alias in node.names:
-                        assert alias.name != "lru_cache", (
-                            "금지 import 감지: from functools import lru_cache"
-                        )
+
+            # import collections 후 collections.OrderedDict 등 속성 접근 차단
+            if isinstance(node, ast.Attribute) and node.attr in forbidden_names:
+                if isinstance(node.value, ast.Name) and node.value.id in ("collections", "functools"):
+                    pytest.fail(
+                        f"금지 사용 감지: {node.value.id}.{node.attr}"
+                    )
 
     def test_linked_list_ops(self):
         """이중 연결 리스트 조작 메서드(move_to_front 등)가 2개 이상 존재하는지 확인 (7점)"""
@@ -259,8 +256,8 @@ class TestBasicCommand:
         self._responses = _run_repl(commands)
 
     def test_cli_runnable(self):
-        """cli.py 실행 + mini-redis> 프롬프트 출력 확인 (3점)"""
-        cli_path = os.path.join(_SUBMISSION_DIR, "cli.py")
+        """lru_cache.py 실행 + mini-redis> 프롬프트 출력 확인 (3점)"""
+        cli_path = os.path.join(_SUBMISSION_DIR, "lru_cache.py")
         result = subprocess.run(
             [sys.executable, cli_path],
             input="exit\n",

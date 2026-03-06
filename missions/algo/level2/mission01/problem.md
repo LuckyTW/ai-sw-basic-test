@@ -6,7 +6,7 @@
 
 #### 핵심 요구사항
 
-1. **커밋 그래프 (`mini_git.py`)**
+1. **커밋 그래프 + CLI (`mini_git.py`)**
    - `Commit` 클래스: `hash`, `message`, `author`, `timestamp`, `parents`, `branch` 속성
    - `CommitGraph` 클래스: `dict` 기반 커밋 저장소 + 브랜치 관리
      - `init(author)` → 저장소 초기화, main 브랜치 생성
@@ -20,10 +20,7 @@
    - `merge_sort(arr, key)` → **정렬 알고리즘 직접 구현**
    - `find_path(graph, h1, h2)` → **BFS로 두 커밋 간 최단 경로** (무방향!)
    - `find_ancestors(graph, hash)` → BFS로 모든 조상 탐색 (부모 방향만)
-
-2. **CLI (`cli.py`)**
-   - `mini-git> ` 프롬프트로 대화형 REPL (템플릿에 기본 구조 제공됨)
-   - 9개 명령어 처리 (아래 출력 형식 참조)
+   - `main()` → `mini-git> ` 프롬프트로 대화형 REPL (템플릿에 기본 구조 제공됨), 9개 명령어 처리 (아래 출력 형식 참조)
 
 #### 해시 함수
 
@@ -111,7 +108,6 @@ mini-git> EXIT
 
 ### 제출 방식
 
-`mini_git.py`와 `cli.py` 2개 파일을 제출합니다.
+`mini_git.py` 1개 파일을 제출합니다.
 - 템플릿 파일의 `TODO` 부분을 구현하세요.
-- `cli.py`는 `from mini_git import ...`로 임포트합니다.
 - `generate_hash` 함수는 수정하지 마세요.

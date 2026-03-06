@@ -73,3 +73,15 @@ class LRUCache:
     def info_memory(self) -> dict:
         """메모리 통계 반환"""
         pass  # TODO
+
+
+# -- CLI REPL --
+
+def main():
+    """REPL 루프"""
+    cache = LRUCache()
+    pass  # TODO
+
+
+if __name__ == "__main__":
+    main()
